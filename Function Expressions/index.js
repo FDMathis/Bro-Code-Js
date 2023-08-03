@@ -9,4 +9,15 @@ const greeting = function(){
 
 greeting();
 
-const 
+//Create a counter
+
+let count = 0;
+
+document.getElementById("increase").onclick = function(){
+    count+=1;
+    document.getElementById("myLabel").innerHTML = count;
+}
+document.getElementById("decrease").onclick = function(){
+    count-=1;
+    document.getElementById("myLabel").innerHTML = count;
+}
