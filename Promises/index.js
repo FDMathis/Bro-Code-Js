@@ -24,4 +24,17 @@ promise.then(value => console.log(value))
     .catch(error => console.log(error));
 
 
-//* This code did not work for me.*
+//Another example
+const promise2 = new Promise(resolve => {
+        setTimeout(resolve, 5000);
+    });
+
+promise2.then(() => console.log("Thanks for waiting!"));
+
+
+//Promise with an arghument
+const wait = time => new Promise(resolve => {
+    setTimeout(resolve, time);
+});
+
+wait(6000).then(() => console.log("Here ya go!"));
