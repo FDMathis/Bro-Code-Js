@@ -1,0 +1,12 @@
+#myButton{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+#myImage{
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+}
