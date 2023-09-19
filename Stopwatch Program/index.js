@@ -23,11 +23,39 @@ startButton.addEventListener("click", () => {
         intervalId = setInterval(updateTime, 1000);
     }
 });
-pauseButton.addEventListener("click", () => {});
-resetButton.addEventListener("click", () => {});
+pauseButton.addEventListener("click", () => {
+    if(!paused){
+        paused = true;
+        elapsedTime = Date.now() - startTime;
+        clearInterval(intervalId);
+    }
+});
+resetButton.addEventListener("click", () => {
+    paused = true;
+    clearInterval(intervalId);
+    elapsedTime = 0;
+    currentTime = 0;
+    startTime = 0;
+    hours = 0;
+    seconds = 0;
+    minutes = 0;
+    timeDisplay.textContent = "00:00:00";
+});
 
 function updateTime(){
     elapsedTime = Date.now() - startTime;
 
-    seconds = Math.floor(elapsedTime / 1000 % 60);
+    seconds = Math.floor((elapsedTime / 1000) % 60);
+    minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
+    
+    seconds = pad(seconds);
+    minutes = pad(minutes);
+    hours = pad(hours);
+
+    timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+
+    function pad(unit){
+        return (("0") + unit).length > 2 ? unit : "0" + unit
+    }
 }
